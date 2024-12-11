@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI Image Generator</title>
+</head>
+<body>
+  <h1>AI Image Generator</h1>
+  <form id="imageForm">
+    <p><label for="prompt">Please type the AI image prompt below</label></p>
+    <textarea id="prompt" name="prompt" rows="4" cols="50"></textarea>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+  <div>
+    <img id="randomImage" src="GenerateAnImage!.jpg" alt="Click the button to load your image!" width="300">
+  </div>
+  
+  <p>Click the "Submit" button and you'll receive the AI-generated image! Please wait for around 15 seconds for the image to be generated.</p>
+  <script>
+    document.getElementById('imageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const promptValue = document.getElementById('prompt').value.trim();
+      if (promptValue === "") {
+        alert("Please enter a valid prompt.");
+        return;
+      }
+
+      const imageElement = document.getElementById('randomImage');
+      imageElement.src = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptValue)}?random=${Date.now()}`;
+    });
+  </script>
+</body>
+</html>
