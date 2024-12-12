@@ -2,21 +2,32 @@
 <html>
 <head>
   <title>Free AI Image Generator</title>
+  <style>
+    p {
+      font-size: 18px;
+      text-align: center;
+      color: white;
+    }
+    h1 {
+      text-align: center;
+      color: white
+    }
+  </style>
 </head>
-<body>
+<body style="background-color: #083D77;">
   <h1>AI Image Generator</h1>
-  <form id="imageForm">
-    <p><label for="prompt">Please type the AI image prompt below</label></p>
-    <textarea id="prompt" name="prompt" rows="4" cols="50"></textarea>
+  <form id="imageForm" style="text-align: center;">
+    <p><label for="prompt">Please type the AI image prompt below.</label></p>
+    <textarea id="prompt" name="prompt" rows="4" cols="50" style="background-color: #CCFBFE;"></textarea>
     <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" style="color: black; font-family: 'Times New Roman'; font-size: 18px; margin-top: 8px; background-color: #CDD6DD;">
   </form>
-  <div>
-    <img id="randomImage" src="GenerateAnImage!.jpg" alt="Click the button to load your image!" width="300">
-  </div>
-  
   <p>Click the "Submit" button and you'll receive the AI-generated image! Please wait for around 15 seconds for the image to be generated.</p>
-  <script>
+  <div>
+    <img id="randomImage" src="GenerateAnImage!.jpg" alt="Click the button to load your image!" width="400" style="margin-left: 36.8%; margin-top: 8px;">
+  </div>
+
+<script>
     document.getElementById('imageForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
