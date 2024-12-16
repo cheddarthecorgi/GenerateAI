@@ -14,7 +14,7 @@
     }
   </style>
 </head>
-<body style="background-color: #083D77;">
+<body style="background-image: url('GIF.gif');">
   <h1>AI Image Generator</h1>
   <form id="imageForm" style="text-align: center;">
     <p><label for="prompt">Please type the AI image prompt below.</label></p>
@@ -30,13 +30,14 @@
 <script>
     document.getElementById('imageForm').addEventListener('submit', function(e) {
       e.preventDefault();
-
+      var loader = document.getElementById('randomImage');
+      loader.src = 'mouse.jpg'
       const promptValue = document.getElementById('prompt').value.trim();
       if (promptValue === "") {
         alert("Please enter a valid prompt.");
         return;
       }
-
+      
       const imageElement = document.getElementById('randomImage');
       imageElement.src = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptValue)}?random=${Date.now()}`;
     });
