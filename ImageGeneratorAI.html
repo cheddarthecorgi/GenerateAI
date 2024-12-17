@@ -12,6 +12,13 @@
       text-align: center;
       color: white
     }
+    div.list {
+      text-align: center;
+    }
+    ul.promptList {
+      display: inline-block;
+      text-align: left;
+    }
   </style>
 </head>
 <body style="background-image: url('GIF.gif');">
@@ -26,8 +33,27 @@
   <div>
     <img id="randomImage" src="GenerateAnImage!.jpg" alt="Click the button to load your image!" width="400" style="margin-left: 36.8%; margin-top: 8px;">
   </div>
+<div class="list">
+    <h2 style="color: white; text-align: center;">Previous Prompts</h2>
+    <ol id="promptList" style="color: white;">
 
+    </ol>
+</div>
 <script>
+    function updatePromptList() {
+      const promptListElement = document.getElementById('promptList');
+      promptListElement.innerHTML = '';
+      const prompts = localStorage.getItem('previousPrompts');
+      if (prompts) {
+        const promptArray = prompts.split('|');
+        promptArray.forEach(function(prompt) {
+          const listItem = document.createElement('li');
+          listItem.textContent = prompt;
+          promptListElement.appendChild(listItem);
+        });
+      }
+    }
+    updatePromptList();
     document.getElementById('imageForm').addEventListener('submit', function(e) {
       e.preventDefault();
       var loader = document.getElementById('randomImage');
@@ -37,7 +63,13 @@
         alert("Please enter a valid prompt.");
         return;
       }
-      
+      let storedPrompts = localStorage.getItem('previousPrompts');
+      if (!storedPrompts) {
+        storedPrompts = ''; 
+      }
+      storedPrompts += (storedPrompts ? '|' : '') + promptValue;
+      localStorage.setItem('previousPrompts', storedPrompts);
+      updatePromptList();
       const imageElement = document.getElementById('randomImage');
       imageElement.src = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptValue)}?random=${Date.now()}`;
     });
