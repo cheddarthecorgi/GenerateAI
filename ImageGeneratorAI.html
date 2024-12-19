@@ -70,7 +70,10 @@
       storedPrompts += (storedPrompts ? '|' : '') + promptValue;
       localStorage.setItem('previousPrompts', storedPrompts);
       updatePromptList();
+      let image = document.getElementById('randomImage');
+      image.src = 'Loading.GIF';
       const imageElement = document.getElementById('randomImage');
+      console.log('testing')
       imageElement.src = `https://image.pollinations.ai/prompt/${encodeURIComponent(promptValue)}?random=${Date.now()}`;
     });
   </script>
