@@ -19,9 +19,22 @@
       display: inline-block;
       text-align: left;
     }
+    .bg {
+  /* The image used */
+      background-image: url('GIF.gif');
+
+  /* Full height */
+      height: 100%;
+
+  /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+}
   </style>
 </head>
-<body style="background-image: url('GIF.gif');">
+  <body style="background-image: url('GIF.gif'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+
   <h1>AI Image Generator</h1>
   <form id="imageForm" style="text-align: center;">
     <p><label for="prompt">Please type the AI image prompt below.</label></p>
